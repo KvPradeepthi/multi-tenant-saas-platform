@@ -1,0 +1,47 @@
+{
+  "project_name": "Multi-tenant SaaS Platform",
+  "project_description": "Production-ready multi-tenant SaaS platform with project and task management",
+  "github_repository": "https://github.com/KvPradeepthi/multi-tenant-saas-platform",
+  "submission_date": "2025-01-03",
+  "deadline": "2026-01-03T16:59:00Z",
+  "technologies": {
+    "backend": ["Node.js", "Express.js", "PostgreSQL"],
+    "frontend": ["HTML5", "CSS3", "JavaScript"],
+    "devops": ["Docker", "Docker Compose"]
+  },
+  "api_endpoints": 19,
+  "frontend_pages": 6,
+  "features": [
+    "JWT Authentication",
+    "Role-based Access Control",
+    "Multi-tenant Data Isolation",
+    "Project Management",
+    "Task Management",
+    "Team Member Management",
+    "Docker Containerization"
+  ],
+  "test_credentials": {
+    "admin": {
+      "email": "admin@example.com",
+      "password": "admin123456",
+      "company_name": "Admin Company",
+      "role": "admin"
+    },
+    "user": {
+      "email": "user@example.com",
+      "password": "user123456",
+      "company_name": "User Company",
+      "role": "user"
+    },
+    "database": {
+      "host": "database",
+      "port": 5432,
+      "database": "saas_platform",
+      "username": "saas_user",
+      "password": "secure_password_123"
+    }
+  },
+  "deployment_instructions": "Run 'docker-compose up -d' in the root directory",
+  "api_documentation": "Available at /api/v1/health and each endpoint returns {success, message, data}",
+  "video_demo": "Demo video included showing user registration, login, project creation, task management"
+}
