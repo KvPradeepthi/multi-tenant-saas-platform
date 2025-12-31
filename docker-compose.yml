@@ -3,7 +3,7 @@ version: '3.8'
 services:
   database:
     image: postgres:15
-    container_name: saas_db
+    container_name: database
     environment:
       POSTGRES_DB: saas_platform
       POSTGRES_USER: saas_user
@@ -18,10 +18,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - saas-network
 
   backend:
     build: ./backend
-    container_name: saas_backend
+    container_name: backend
     environment:
       DB_HOST: database
       DB_PORT: 5432
@@ -36,18 +38,25 @@ services:
       database:
         condition: service_healthy
     volumes:
-      - ./backend:/app
-      - /app/node_modules
+      - ./database:/app/database
     restart: unless-stopped
+    networks:
+      - saas-network
 
   frontend:
     build: ./frontend
-    container_name: saas_frontend
+    container_name: frontend
     ports:
       - "3000:3000"
     depends_on:
       - backend
     restart: unless-stopped
+    networks:
+      - saas-network
 
 volumes:
   postgres_data:
+
+networks:
+  saas-network:
+    driver: bridge
